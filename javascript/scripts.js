@@ -384,7 +384,7 @@ const infoPeriodo = document.getElementById("infoPeriodo");
 
 
 
-
+/* Lógica para nome do usuário */
 
 
   
@@ -436,10 +436,35 @@ const infoPeriodo = document.getElementById("infoPeriodo");
   
 
 
-
+/* seleção periodo */
 
   
 
+document.addEventListener("DOMContentLoaded", function() {
+  const startDateInput = document.getElementById("start-date");
+  const endDateInput = document.getElementById("end-date");
+  const fetchDataButton = document.getElementById("fetch-data");
+  const dataDisplay = document.getElementById("data-display");
+
+  fetchDataButton.addEventListener("click", () => {
+      const startDate = startDateInput.value;
+      const endDate = endDateInput.value;
+
+      // Replace this with your API endpoint
+      const apiUrl = `/dados_chamadas_gravadas.json=${startDate}&end=${endDate}`;
+
+      // Perform fetch request to your API
+      fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+              // Display fetched data on the page
+              dataDisplay.innerHTML = JSON.stringify(data, null, 2);
+          })
+          .catch(error => {
+              console.error("Error fetching data:", error);
+          });
+  });
+});
 
 
 
