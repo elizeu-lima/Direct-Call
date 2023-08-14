@@ -1,120 +1,4 @@
-const apiAudios = {
-    
-        "registros": [
-          {
-            "id": 1,
-            "idOperador": "op1",
-            "nomeOperador": "Operador 1",
-            "data_inicio": "2023-08-04T10:00:00",
-            "data_fim": "2023-08-04T10:30:00",
-            "nomeCliente": "Cliente 1",
-            "numero_de_origem": "+5511999999991",
-            "numero_de_destino": "+5511988888881",
-            "url_da_gravacao": "http://example.com/gravacao1"
-          },
-          {
-            "id": 2,
-            "idOperador": "op2",
-            "nomeOperador": "Operador 2",
-            "data_inicio": "2023-08-04T10:30:00",
-            "data_fim": "2023-08-04T11:00:00",
-            "nomeCliente": "Cliente 2",
-            "numero_de_origem": "+5511999999992",
-            "numero_de_destino": "+5511988888882",
-            "url_da_gravacao": "http://example.com/gravacao2"
-          },
-          {
-            "id": 3,
-            "idOperador": "op3",
-            "nomeOperador": "Operador 3",
-            "data_inicio": "2023-08-04T11:00:00",
-            "data_fim": "2023-08-04T11:30:00",
-            "nomeCliente": "Cliente 3",
-            "numero_de_origem": "+5511999999993",
-            "numero_de_destino": "+5511988888883",
-            "url_da_gravacao": "http://example.com/gravacao3"
-          },
-          {
-            "id": 4,
-            "idOperador": "op4",
-            "nomeOperador": "Operador 4",
-            "data_inicio": "2023-08-04T11:30:00",
-            "data_fim": "2023-08-04T12:00:00",
-            "nomeCliente": "Cliente 4",
-            "numero_de_origem": "+5511999999994",
-            "numero_de_destino": "+5511988888884",
-            "url_da_gravacao": "http://example.com/gravacao4"
-          },
-          {
-            "id": 5,
-            "idOperador": "op5",
-            "nomeOperador": "Operador 5",
-            "data_inicio": "2023-08-04T12:00:00",
-            "data_fim": "2023-08-04T12:30:00",
-            "nomeCliente": "Cliente 5",
-            "numero_de_origem": "+5511999999995",
-            "numero_de_destino": "+5511988888885",
-            "url_da_gravacao": "http://example.com/gravacao5"
-          },
-          {
-            "id": 6,
-            "idOperador": "op6",
-            "nomeOperador": "Operador 6",
-            "data_inicio": "2023-08-04T12:30:00",
-            "data_fim": "2023-08-04T13:00:00",
-            "nomeCliente": "Cliente 6",
-            "numero_de_origem": "+5511999999996",
-            "numero_de_destino": "+5511988888886",
-            "url_da_gravacao": "http://example.com/gravacao6"
-          },
-          {
-            "id": 7,
-            "idOperador": "op7",
-            "nomeOperador": "Operador 7",
-            "data_inicio": "2023-08-04T13:00:00",
-            "data_fim": "2023-08-04T13:30:00",
-            "nomeCliente": "Cliente 7",
-            "numero_de_origem": "+5511999999997",
-            "numero_de_destino": "+5511988888887",
-            "url_da_gravacao": "http://example.com/gravacao7"
-          },
-          {
-            "id": 8,
-            "idOperador": "op8",
-            "nomeOperador": "Operador 8",
-            "data_inicio": "2023-08-04T13:30:00",
-            "data_fim": "2023-08-04T14:00:00",
-            "nomeCliente": "Cliente 8",
-            "numero_de_origem": "+5511999999998",
-            "numero_de_destino": "+5511988888888",
-            "url_da_gravacao": "http://example.com/gravacao8"
-          },
-          {
-            "id": 9,
-            "idOperador": "op9",
-            "nomeOperador": "Operador 9",
-            "data_inicio": "2023-08-04T14:00:00",
-            "data_fim": "2023-08-04T14:30:00",
-            "nomeCliente": "Cliente 9",
-            "numero_de_origem": "+5511999999999",
-            "numero_de_destino": "+5511988888889",
-            "url_da_gravacao": "http://example.com/gravacao9"
-          },
-          {
-            "id": 10,
-            "idOperador": "op10",
-            "nomeOperador": "Operador 10",
-            "data_inicio": "202-11-03T14:30:00",
-            "data_fim": "2023-08-04T15:00:00",
-            "nomeCliente": "Cliente 10",
-            "numero_de_origem": "+5511999999900",
-            "numero_de_destino": "+5511988888890",
-            "url_da_gravacao": "http://example.com/gravacao10"
-          }
-        ]
-      }
-      
-
+/*api das chamadas gravadas  */
 
 const apiData = {
     
@@ -259,133 +143,231 @@ const apiData = {
       
   };
 
-  const registrosLigacao = document.getElementById('mensagens-chat');
 
+  /*javascript que chamas as 3 ultimas mensagens*/
 
-  const registrosList = document.getElementById('registros-list');
+  function renderChats(chats) {
+    const chatHistoryDiv = document.getElementById('chatHistory');
+    chatHistoryDiv.innerHTML = '';
 
+    chats.forEach(chat => {
+      const chatDiv = document.createElement('div');
+      chatDiv.className = 'chat';
+      chatDiv.innerHTML = `
+        <p style=" padding: 2px 1px;"><strong>Data/Hora:</strong > ${chat.data_e_hora}</p><i style="diplay:flex;  margin-left: 620px;
+        margin-top: -640px;" class="fa-brands fa-whatsapp"></i>
+        <p style=" padding: 2px 1px;">Operador: ${chat.operador.nome}</p>
+        <p style=" padding: 2px 1px;">Telefone: ${chat.cliente.telefone}</p>
+      `;
+      chatHistoryDiv.appendChild(chatDiv);
+    });
+  }
 
+  function filterChatsByOperator(operatorName) {
+    const filteredChats = apiData.registros.filter(chat => chat.operador.nome === operatorName);
+    renderChats(filteredChats);
+  }
 
-function displayUltimasSeisLigacoes() {
-  // Ordena os registros por data e hora (mais recente primeiro)
-  apiAudios.registros.sort((a, b) => {
-    return new Date(b.data_e_hora) - new Date(a.data_e_hora);
+  function showAllChats() {
+    renderChats(apiData.registros);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const operator1Image = document.getElementById('operador1');
+    const operator2Image = document.getElementById('operador2');
+    const showAllImage = document.getElementById('showAll');
+
+    operator1Image.addEventListener('click', () => filterChatsByOperator('Operador 1'));
+    operator2Image.addEventListener('click', () => filterChatsByOperator('Operador 2'));
+    showAllImage.addEventListener('click', showAllChats);
+
+     // Adicionar atributo title com o nome do operador
+     operator1Image.title = 'Operador 1';
+     operator2Image.title = 'Operador 2';
+     showAllImage.title = 'Mostrar Mais';
+
+    // Renderizar automaticamente os últimos 3 registros iniciais
+    const lastThreeChats = apiData.registros.slice(-3);
+    renderChats(lastThreeChats);
   });
 
-  // Pega apenas as 6 últimas ligações
-  const ultimasSeis = apiData.registros.slice(0, 8);
+  
 
-  // Limpa a lista antes de exibir as ligações
-  registrosLigacao.innerHTML = '';
 
-  ultimasSeis.forEach(registro => {
-    // Crie o elemento HTML para exibir os detalhes da ligação
-    const ligacaoElement = document.createElement('div');
-    ligacaoElement.classList.add('ligacao');
+/*final */
 
-    const operadorNome = registro.operador.nome;
-    const clienteTelefone = registro.cliente.telefone;
-    const dataHora = new Date(registro.data_e_hora).toLocaleString();
+/*javascrit das 6 ultimas chamdas e os filtros */
 
-    
-    ligacaoElement.innerHTML = `
-      <p>${dataHora} - Operador: ${operadorNome} - Telefone: ${clienteTelefone}</p>
-      <audio controls>
-        <source src="caminho-para-o-audio.mp3" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-      </audio>
+
+const chamadasData = {
+  "registros": [
+    {
+      "id": 1,
+      "idOperador": "op1",
+      "nomeOperador": "Operador 1",
+      "data_inicio": "2023-08-04T10:00:00",
+      "data_fim": "2023-08-04T10:30:00",
+      "nomeCliente": "Cliente 1",
+      "numero_de_origem": "+5511999999991",
+      "numero_de_destino": "+5511988888881",
+      "url_da_gravacao": "http://example.com/gravacao1"
+    },
+    {
+      "id": 2,
+      "idOperador": "op2",
+      "nomeOperador": "Operador 2",
+      "data_inicio": "2023-08-04T10:30:00",
+      "data_fim": "2023-08-04T11:00:00",
+      "nomeCliente": "Cliente 2",
+      "numero_de_origem": "+5511999999992",
+      "numero_de_destino": "+5511988888882",
+      "url_da_gravacao": "http://example.com/gravacao2"
+    },
+    {
+      "id": 3,
+      "idOperador": "op3",
+      "nomeOperador": "Operador 3",
+      "data_inicio": "2023-08-04T11:00:00",
+      "data_fim": "2023-08-04T11:30:00",
+      "nomeCliente": "Cliente 3",
+      "numero_de_origem": "+5511999999993",
+      "numero_de_destino": "+5511988888883",
+      "url_da_gravacao": "http://example.com/gravacao3"
+    },
+    {
+      "id": 4,
+      "idOperador": "op4",
+      "nomeOperador": "Operador 4",
+      "data_inicio": "2023-08-04T11:30:00",
+      "data_fim": "2023-08-04T12:00:00",
+      "nomeCliente": "Cliente 4",
+      "numero_de_origem": "+5511999999994",
+      "numero_de_destino": "+5511988888884",
+      "url_da_gravacao": "http://example.com/gravacao4"
+    },
+    {
+      "id": 5,
+      "idOperador": "op5",
+      "nomeOperador": "Operador 5",
+      "data_inicio": "2023-08-04T12:00:00",
+      "data_fim": "2023-08-04T12:30:00",
+      "nomeCliente": "Cliente 5",
+      "numero_de_origem": "+5511999999995",
+      "numero_de_destino": "+5511988888885",
+      "url_da_gravacao": "http://example.com/gravacao5"
+    },
+    {
+      "id": 6,
+      "idOperador": "op6",
+      "nomeOperador": "Operador 6",
+      "data_inicio": "2023-08-04T12:30:00",
+      "data_fim": "2023-08-04T13:00:00",
+      "nomeCliente": "Cliente 6",
+      "numero_de_origem": "+5511999999996",
+      "numero_de_destino": "+5511988888886",
+      "url_da_gravacao": "http://example.com/gravacao6"
+    },
+    {
+      "id": 7,
+      "idOperador": "op7",
+      "nomeOperador": "Operador 7",
+      "data_inicio": "2023-08-04T13:00:00",
+      "data_fim": "2023-08-04T13:30:00",
+      "nomeCliente": "Cliente 7",
+      "numero_de_origem": "+5511999999997",
+      "numero_de_destino": "+5511988888887",
+      "url_da_gravacao": "http://example.com/gravacao7"
+    },
+    {
+      "id": 8,
+      "idOperador": "op8",
+      "nomeOperador": "Operador 8",
+      "data_inicio": "2023-08-04T13:30:00",
+      "data_fim": "2023-08-04T14:00:00",
+      "nomeCliente": "Cliente 8",
+      "numero_de_origem": "+5511999999998",
+      "numero_de_destino": "+5511988888888",
+      "url_da_gravacao": "http://example.com/gravacao8"
+    },
+    {
+      "id": 9,
+      "idOperador": "op9",
+      "nomeOperador": "Operador 9",
+      "data_inicio": "2023-08-04T14:00:00",
+      "data_fim": "2023-08-04T14:30:00",
+      "nomeCliente": "Cliente 9",
+      "numero_de_origem": "+5511999999999",
+      "numero_de_destino": "+5511988888889",
+      "url_da_gravacao": "http://example.com/gravacao9"
+    },
+    {
+      "id": 10,
+      "idOperador": "op10",
+      "nomeOperador": "Operador 10",
+      "data_inicio": "2023-08-04T14:30:00",
+      "data_fim": "2023-08-04T15:00:00",
+      "nomeCliente": "Cliente 10",
+      "numero_de_origem": "+5511999999900",
+      "numero_de_destino": "+5511988888890",
+      "url_da_gravacao": "http://example.com/gravacao10"
+    }
+  ]
+};
+
+const chamadasContainer = document.getElementById('chamadas');
+const userImages = document.querySelectorAll('.user-images img');
+const dateFilterInput = document.getElementById('dateFilter');
+const filterButton = document.getElementById('filterButton');
+const periodDisplay = document.getElementById('periodDisplay');
+
+function renderChamadas(chamadas) {
+  chamadasContainer.innerHTML = '';
+
+  const ultimasChamadas = chamadas.slice(-6);
+
+  ultimasChamadas.forEach(chamada => {
+    const chamadaElement = document.createElement('div');
+    chamadaElement.className = 'chamada';
+    chamadaElement.innerHTML = `
+      <p><strong>Data/Hora:</strong> ${chamada.data_inicio}</p>
+      <p style="display: flex; align-items: center;  justify-content: space-between;">Operador: ${chamada.nomeOperador} <audio controls>
+      <audio controls style="width: 5%; max-width: 100px; margin-right: 5px ;">
+      <source src="caminho_para_o_arquivo_de_audio.mp3" type="audio/mpeg">
+      Seu navegador não suporta a tag de áudio.
+  </audio></p>
+      <p>Telefone: ${chamada.numero_de_origem}</p><br>
     `;
-
-    registrosLigacao.appendChild(ligacaoElement);
+    chamadasContainer.appendChild(chamadaElement);
   });
+
+  const dataInicial = ultimasChamadas.length > 0 ? ultimasChamadas[0].data_inicio : '-';
+  const dataFinal = ultimasChamadas.length > 0 ? ultimasChamadas[ultimasChamadas.length - 1].data_inicio : '-';
+  periodDisplay.innerHTML = `<p>${dataInicial}</p> |--| <p> ${dataFinal}</p>`;
 }
 
-// Função para buscar a API (substitua 'apiData' pelo seu objeto JSON da API)
+function filterChamadasByDate(selectedDate) {
+  const filteredChamadas = chamadasData.registros.filter(chamada => isSameDay(new Date(chamada.data_inicio), selectedDate));
+  renderChamadas(filteredChamadas);
+}
 
+function isSameDay(date1, date2) {
+  return (
+    date1.getDate() === date2.getDate() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getFullYear() === date2.getFullYear()
+  );
+}
 
-// Chama a função para exibir as 6 últimas ligações na inicialização
-document.addEventListener('DOMContentLoaded', () => {
-  displayUltimasSeisLigacoes();
+dateFilterInput.addEventListener('change', () => {
+  const selectedDate = new Date(dateFilterInput.value);
+  filterChamadasByDate(selectedDate);
 });
 
-  
- 
-  
-  
-  
-
-  function displayUltimosTresRegistros() {
-    // Ordena os registros pelo critério: data, hora, nome do operador e telefone
-    apiData.registros.sort((a, b) => {
-      const dataHoraA = new Date(a.data_e_hora);
-      const dataHoraB = new Date(b.data_e_hora);
-  
-      if (dataHoraA < dataHoraB) return 1;
-      if (dataHoraA > dataHoraB) return -1;
-  
-      // Se as datas forem iguais, compara a hora
-      return a.operador.nome.localeCompare(b.operador.nome) ||
-             a.cliente.telefone.localeCompare(b.cliente.telefone);
-    });
-  
-    // Pega apenas os 3 últimos registros
-    const ultimosTres = apiData.registros.slice(0, 3);
-  
-    // Limpa a lista antes de exibir os registros
-    registrosList.innerHTML = '';
-  
-    ultimosTres.forEach(registro => {
-      // Crie os elementos HTML para exibir os detalhes do registro
-      const registroElement = document.createElement('div');
-      registroElement.classList.add('registro');
-  
-      const operadorNome = registro.operador.nome;
-      const clienteTelefone = registro.cliente.telefone;
-      const dataHora = new Date(registro.data_e_hora).toLocaleString();
-  
-      registroElement.innerHTML = `
-        <p>Data e Hora: ${dataHora}</p><br>
-         <p>Operador: ${operadorNome}</p> <br>
-         <p>Telefone: ${clienteTelefone}</p> 
-        
-
-      `;
-  
-      registrosList.appendChild(registroElement);
-    });
-  }
-  
-  
-  
-  // Chama a função para exibir os 3 últimos registros na inicialização
-  document.addEventListener('DOMContentLoaded', () => {
-    displayUltimosTresRegistros();
-  });
-  
-  // Dados JSON fornecidos
-
-  
-  // Referência ao botão
-  const botaoMostrar = document.getElementById("mostrarDados");
-  
-  // Função para mostrar os dados em uma janela
-  function mostrarDados() {
-    const dadosString = JSON.stringify(apiData, null, 2); // Formatação para facilitar a leitura
-    alert(dadosString);
-  }
-  
-  // Adicionar um evento de clique ao botão
-  botaoMostrar.addEventListener("click", mostrarDados);
-  
-  // Referências aos elementos
-const botaoPeriodo = document.getElementById("mostrarPeriodo");
-const infoPeriodo = document.getElementById("infoPeriodo");
+// Inicialização da página
+renderChamadas(chamadasData.registros);
 
 
-
-
-/* Lógica para nome do usuário */
-
+/*final */
 
   
  
@@ -409,63 +391,6 @@ const infoPeriodo = document.getElementById("infoPeriodo");
   
 
   
-
-  
-  // Referência ao elemento de exibição do período
-  const periodoDisplay = document.getElementById("periodoDisplay");
-  
-  // Função para formatar a data em um formato legível
-  function formatarData(data) {
-    return data.toLocaleDateString("pt-BR", {
-      day: "numeric",
-      month: "numeric",
-      year: "numeric"
-    });
-  }
-  
-  // Ordenar os registros por data de início
-  apiAudios.registros.sort((a, b) => new Date(a.data_inicio) - new Date(b.data_inicio));
-  
-  // Obter a menor e a maior data formatada
-  const menorData = new Date(apiAudios.registros[0].data_inicio);
-  const maiorData = new Date(apiAudios.registros[apiAudios.registros.length - 1].data_inicio);
-  
-  // Exibir as datas no elemento
-  periodoDisplay.textContent = `Menor Data: ${formatarData(menorData)} | Maior Data: ${formatarData(maiorData)}`;
-  
-  
-
-
-/* seleção periodo */
-
-  
-
-document.addEventListener("DOMContentLoaded", function() {
-  const startDateInput = document.getElementById("start-date");
-  const endDateInput = document.getElementById("end-date");
-  const fetchDataButton = document.getElementById("fetch-data");
-  const dataDisplay = document.getElementById("data-display");
-
-  fetchDataButton.addEventListener("click", () => {
-      const startDate = startDateInput.value;
-      const endDate = endDateInput.value;
-
-      // Replace this with your API endpoint
-      const apiUrl = `/dados_chamadas_gravadas.json=${startDate}&end=${endDate}`;
-
-      // Perform fetch request to your API
-      fetch(apiUrl)
-          .then(response => response.json())
-          .then(data => {
-              // Display fetched data on the page
-              dataDisplay.innerHTML = JSON.stringify(data, null, 2);
-          })
-          .catch(error => {
-              console.error("Error fetching data:", error);
-          });
-  });
-});
-
 
 
 

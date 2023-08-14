@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+    <!-- Inicio com header dividido por dois artcle -->
     <header>
         <h1>Direct Chat</h1>
         <p class="informatica">SIGNALLINK INFORMATICA LTDA - 02.677.129/0001-64</p>
@@ -18,89 +18,78 @@
     </header>
 
     <div class="container">
+    <!-- parte das 3 ultimas mensages e com atualização por iconde de atendente-->
 
-        <article>
-            <div class="container">
+        <article class="container">
+            <div>
                 <div class="chat">
-
                     <h4 class="wt">HISTÓRICO DE Chat e Whatsapp</h4>
-
                     <div class="image-container">
-
-
-                        <img src="/img/directletrabranca (1).jpeg" alt="Imagem do Usuário" id="user-image">
-                        <div id="username-overlay" class="overlay">Nome do Usuário</div>
+                        <img src="/img/directletrabranca (1).jpeg" alt="Ícone Operador 1" id="operador1"
+                            title="Operador 1">
+                        <img src="/img/user.png" alt="Ícone Operador 2" id="operador2" title="Operador 2">
 
                     </div>
+                    <div id="chatHistory">
+                        <!-- A lista de atendimentos será exibida aqui -->
+                    </div>
 
+                        <!-- Mostra o restante da api-->
 
+                    <div id="loadMore">
 
-                    <!-- 
-                         <div class="operadores">
-                            <a href="#"><img id="direct" src="/img/directletrabranca (1).jpeg" alt="icone do atendente ou empresa"></a>
-                            <a href="#"><img id="usuario" src="/img/user.png" alt="icone do atendente ou empresa"></a>
-                          </div>
-
-                    -->
-                    <div id="registros-list"></div>
-
-
-                    <button id="mostrarDados" class="more">Ver Todos <i id="mostrar"
-                            class="fa-solid fa-share-from-square"></i></button>
-
-
+                        <a class="more"><img src="/img/carregar mais.png" alt="Ícone Carregar" id="showAll"
+                                title="Mostrar Mais"></a>
+                    </div>
                 </div>
         </article>
 
-        <article>
-            <div class="chamadas">
 
+            <!--parte das 6 mensagens gravadas -->
+
+        <article class="ct-chamadas">
+            <div>
                 <h4 class="ch">HISTÓRICO DE Chamadas e chamadas gravadas</h4>
                 <div class="image-container">
 
-                    <img src="/img/directletrabranca (1).jpeg" alt="Imagem do Usuário" id="user-image">
-                    <div id="username-overlay" class="overlay">Nome do Usuário</div>
+                    <img id="op1" src="/img/directletrabranca (1).jpeg" alt="Operador1" title="Operador 1">
+                    <img id="op2" src="/img/user.png" alt="Operador2" title="Operador 2">
+                    <img id="op3" src="/img/directletrabranca (1).jpeg" alt="Operador1" title="Operador 3">
+
+                    
+      
+                    
+                </div>
+                <div id="chamadas">
+                    <!-- Chamadas serão renderizadas aqui via JavaScript -->
+                </div>
+                
+
+                  <div id="periodDisplay">
+                    <p>Periodo:</p>
+                    
+                  </div>
+
+                <div class="filter">
+                    <label for="period">Filtrar por período:</label>
+                    <select id="period">
+                        <option value="today">Hoje</option>
+                        <option value="last3">Últimos 3 dias</option>
+                        <option value="last7">Últimos 7 dias</option>
+                        <option value="last15">Últimos 15 dias</option>
+                        <option value="custom">Período Personalizado</option>
+                    </select>
+
+                   
+
+                    <label for="dateFilter">Filtrar por data:</label>
+                    <input type="date" id="dateFilter">
+                    <button id="filterButton">Filtrar</button>
                 </div>
 
-
-                <!-- 
-                    <div class="op">
-                        <a href="#"><img id="direct" src="/img/directletrabranca (1).jpeg" alt="usuario"></a>
-                        <a href="#"><img id="usuario" src="/img/user.png" alt="usuario"></a>
-                        <a href="#"><img id="direct" src="/img/directletrabranca (1).jpeg" alt="usuario"></a>
-    
-    
-    
-                    </div>
-
-                -->
-                <div id="mensagens-chat"></div>
-
-
-                <div class="gravadas">
-                    <div id="periodoDisplay"></div>
-                    <!-- 
-
-                        <button id="mostrarPeriodo" class="periodo">Periodo <strong>01/072023 - 10/07/2023</strong></button>
-                        <button class="mais">Ver Todos <i id="mostrar" class="fa-solid fa-share-from-square"></i></button>
-                    -->
-
-
-                    <div class="date-selector">
-                        <input type="date">
-                        
-                       
-                    <input type="date">
-                      
-                    </div>
-
-                  
-
-
-               
+              
             </div>
-    </div>
-    </article>
+        </article>
 
     </div>
     <script src="/javascript/scripts.js"></script>
