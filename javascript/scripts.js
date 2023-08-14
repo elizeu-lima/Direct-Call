@@ -154,7 +154,7 @@ const apiData = {
       const chatDiv = document.createElement('div');
       chatDiv.className = 'chat';
       chatDiv.innerHTML = `
-        <p style=" padding: 2px 1px;"><strong>Data/Hora:</strong > ${chat.data_e_hora}</p><i style="diplay:flex;  margin-left: 620px;
+        <p style=" padding: 2px 1px;"><strong>Data/Hora:</strong > ${chat.data_e_hora}</p><i style="diplay:flex;  margin-left: 570px;
         margin-top: -640px;" class="fa-brands fa-whatsapp"></i>
         <p style=" padding: 2px 1px;">Operador: ${chat.operador.nome}</p>
         <p style=" padding: 2px 1px;">Telefone: ${chat.cliente.telefone}</p>

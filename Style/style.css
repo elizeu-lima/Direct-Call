@@ -7,9 +7,347 @@
     font-family: sans-serif;
     
 }
+@media (max-width: 1200px)  {
+  body{
+    
+    
+  }
+}
+
+/*todo estilo do header*/
+
+header{
+  display: flex;
+  justify-content: space-between;
+  background: red;
+}
+
+h1{
+  color: #fff;
+  width: 25%;
+  padding: 18px 20px;
+  
+  font-size: 1.75rem;
+  background: rgb(136, 6, 6);
+}
+
+.informatica{
+  color: #fff;
+  
+  padding: 18px 10px;
+  
+  font-size: 1.55rem;
+}
+
+a{
+  color: #fff;
+  align-items: end;
+  padding: 18px 20px;
+  text-decoration: none;
+  font-size: 1.75rem;
+ 
+}
+
+
+@media (max-width: 768px) {
+ 
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    width: 100%;
+  }
+
+  .imagen-users {
+    margin-left: 5%;
+
+  }
+  .operador1{
+    width: auto;
+    height: auto;
+  }
+  .operador2{
+    width: auto;
+    height: auto;
+  }
+
+  #showAll {
+    margin-left: auto;
+    margin-right: auto;
+    
+  }
+}
+/* div principal que tem todas as outras dentro*/
+
+.container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    background: #fffbf4;
+}
+
+/*article 1*/
+
+.article1{
+  display: flex;
+  width: 50%;
+  height: 100%;
+  background: #fff;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  
+  border: 1px solid #ccc;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.tresultimas{
+display: flex;
+align-items: center;
+justify-content: space-between;
+width: 50%px;
+height: auto;
+padding: 35px 15px;
+background: #fff;
+margin-top: 12px;
+}
+.historicowt{
+  color: red;
+}
+.historicowt{
+display: flex;
+}
+
+.imagen-users{
+margin-left: 150px;
+align-items: center;
+}
+
+#operador1{
+padding: -55px 15px;
+cursor: pointer;
+
+}
+
+#operador1:hover{
+   padding: 0.2px 0.2px;
+    background-color: #5c5f62;
+    color: #ffffff;
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    transition: background-color 0.9s ease;
+}
+#operador2{
+height: 90px;
+cursor: pointer;
+
+}
+
+#operador2:hover{
+  padding: 2px 2px;
+   background-color: #5c5f62;
+   color: #ffffff;
+   border: none;
+   border-radius: 35px;
+   cursor: pointer;
+   transition: background-color 0.9s ease;
+}
+#chatHistory{
+margin-left: 25px;
+height: 475px;
+}
+
+#loadMore{
+
+}
+
+.more{
+
+}
+
+
+#showAll{
+  display: flex;
+width: 55px;
+padding: 5px 5px;
+margin-left: 500px;
+background: red;
+cursor: pointer;
+}
+
+#showAll:hover{
+  padding: 10px 10px;
+   background-color: #c2270c;
+   color: #ffffff;
+   border: none;
+   border-radius: 35px;
+   cursor: pointer;
+   transition: background-color 4s ease;
+}
+
+
+@media (max-width: 768px) {
+ 
+  .article1 {
+    display: block;
+      flex-direction: column; /* Coluna em telas menores */
+  }
+
+  .tresultimas {
+      flex-direction: column; /* Coluna em telas menores */
+  }
+
+  .imagen-users {
+      margin-left: 0; /* Removido o espaçamento em telas menores */
+      margin-top: 15px; /* Espaçamento superior adicionado */
+      text-align: center; /* Centralizado o conteúdo */
+  }
+
+  #operador1,
+  #operador2,
+  #showAll {
+      width: 100%; /* Ocupar toda a largura em telas menores */
+  }
+}
+/*css article 2 6 ultimas chamdas */
+
+.ct-chamadas{
+  display: flex;
+  width: 48%;
+  height: auto;
+  background: #fff;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-top: 10px;
+  
+  padding: 5px 18px;
+  border: 1px solid #ccc;
+          box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.image-container{
+  display: flex;
+  align-items: center;
+  margin-top: 35px;
+}
+h4{
+  color: red;
+  margin-left: 20px;
+}
+
+@media (max-width: 768px) {
+  .ct-chamadas {
+    
+    flex-direction: column; /* Coluna em telas menores */
+  }
+
+  .tresultimas {
+      flex-direction: column; /* Coluna em telas menores */
+  }
+
+  .imagen-users {
+      margin-left: 0; /* Removido o espaçamento em telas menores */
+      margin-top: 15px; /* Espaçamento superior adicionado */
+      text-align: center; /* Centralizado o conteúdo */
+  }
+
+  #operador1,
+  #operador2,
+  #showAll {
+      width: 100%; /* Ocupar toda a largura em telas menores */
+  }
+}
+#op1:hover{
+  padding: 2px 2px;
+  background-color: #5c5f62;
+  color: #ffffff;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background-color 0.9s ease;
+}
+
+
+#op2{
+  width: 90px;
+}
+#op2:hover{
+  padding: 2px 2px;
+  background-color: #5c5f62;
+  color: #ffffff;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background-color 0.9s ease;
+}
+
+#op3:hover{
+  padding: 2px 2px;
+  background-color: #5c5f62;
+  color: #ffffff;
+  border: none;
+  border-radius: 35px;
+  cursor: pointer;
+  transition: background-color 0.9s ease;
+}
+
+#chamadas{
+  width: 90%;
+  height: 100%;
+  margin-left: 25px;
+  font-size: 0.80rem;
+
+}
+
+#periodDisplay{
+  display: flex;
+  margin-top: -50px;
+  
+}
+
+.filter{
+ margin-top: -80px;
+  align-items: center;
+}
+
+@media (max-width: 768px) {
+  .ct-chamadas {
+    display: block;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #chamadas {
+    font-size: 0.7rem;
+  }
+
+  .image-container {
+    margin-top: 20px;
+  }
+
+  h4 {
+    margin-left: 10px;
+  }
+
+  #periodDisplay,
+  .filter {
+    margin-top: -20px;
+  }
+}
+
+
+
+
+
+
+
 
 /*header da logo e nome da empresa*/
-
+/*
 header {
     display: flex;
     justify-content: space-between;
@@ -50,6 +388,7 @@ a{
     }
   }
   /* Responsividade para tablets */
+  /*
   @media (max-width: 768px) {
     header {
       width: 100%;
@@ -59,6 +398,7 @@ a{
   }
   
   /* Responsividade para celulares */
+  /*
   @media (max-width: 480px) {
     header{
       font-size: 20px;
@@ -67,7 +407,7 @@ a{
     }
   }
 /*article Histórico de Chat e Whatsapp*/
-
+/*
   .container {
     display: flex;
     justify-content: space-between;
@@ -111,6 +451,7 @@ a{
 }
 
 /*Responsividade Desktop*/
+/*
 @media (max-width: 1350px) {
   .image-container {
       width: 100%;
@@ -128,6 +469,7 @@ a{
   }
   
   /* Responsividade para celulares */
+  /*
   @media (max-width: 480px) {
     .image-container{
       font-size: 20px;
@@ -202,6 +544,7 @@ i{
   
 
  /*Responsividade Desktop*/
+ /*
  @media (max-width: 1350px) {
   .container {
       width: 100%;
@@ -210,6 +553,7 @@ i{
     }
   }
   /* Responsividade para tablets */
+  /*
   @media (max-width: 768px) {
     .container {
       width: 100%;
@@ -219,6 +563,7 @@ i{
   }
   
   /* Responsividade para celulares */
+  /*
   @media (max-width: 480px) {
     .container{
       font-size: 20px;
@@ -228,6 +573,7 @@ i{
   }
 
 /*segundo artcle historico de chamadas gravadas*/
+/*
 .ct-chamadas{
   border: 1px solid #ccc;
             box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -329,7 +675,7 @@ i{
 }
   article {
     
-    width: calc(50% - 10px); /* Cria um espaço de 20px entre os artigos */
+    width: calc(50% - 10px); 
     padding: 33px;
     box-sizing: border-box;
     border: 1px solid #fff;
@@ -337,6 +683,7 @@ i{
   }
 
   /*Responsividade Desktop*/
+  /*
   @media (max-width: 1350px) {
     .container {
       width: 100%;
@@ -345,6 +692,7 @@ i{
     }
   }
   /* Responsividade para tablets */
+  /*
   @media (max-width: 768px) {
     .container {
       width: 100%;
@@ -354,6 +702,7 @@ i{
   }
   
   /* Responsividade para celulares */
+  /*
   @media (max-width: 480px) {
     header {
       font-size: 20px;
@@ -447,6 +796,7 @@ position: absolute;
   }
   
 /* Responsividade */
+/*
 @media (max-width: 1350px) {
   header, .container, .image-container, .ct-chamadas {
       padding: 10px 17px;
