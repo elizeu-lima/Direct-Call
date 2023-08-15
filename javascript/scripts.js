@@ -143,9 +143,18 @@ const apiData = {
       
   };
 
+var fecharBotao = document.getElementById("fecharPagina");
+
+fecharBotao.addEventListener("click", function() {
+  // Fecha a janela atual
+  window.close();
+});
 
   /*javascript que chamas as 3 ultimas mensagens*/
-
+  function showAllChats() {
+    renderChats(apiData.registros);
+  }
+  
   function renderChats(chats) {
     const chatHistoryDiv = document.getElementById('chatHistory');
     chatHistoryDiv.innerHTML = '';
@@ -168,9 +177,7 @@ const apiData = {
     renderChats(filteredChats);
   }
 
-  function showAllChats() {
-    renderChats(apiData.registros);
-  }
+ 
 
   document.addEventListener('DOMContentLoaded', () => {
     const operator1Image = document.getElementById('operador1');
